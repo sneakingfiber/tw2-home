@@ -12,21 +12,21 @@ export default function Navbar() {
       <div className="container-max flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-[#222222]">TW<span className="text-[#0ea5e9]">2</span></span>
+          <img src="/tw2-logo.png" alt="Tecnoworld2" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-[#222222] font-medium hover:text-[#0ea5e9] transition-colors">
+          <Link to="/" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
             Home
           </Link>
-          <Link to="/societa" className="text-[#222222] font-medium hover:text-[#0ea5e9] transition-colors">
+          <Link to="/societa" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
             Chi siamo
           </Link>
-          <a href="/#servizi" className="text-[#222222] font-medium hover:text-[#0ea5e9] transition-colors">
+          <a href="/#servizi" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
             Servizi
           </a>
-          <Link to="/supporto" className="text-[#222222] font-medium hover:text-[#0ea5e9] transition-colors">
+          <Link to="/supporto" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
             Supporto
           </Link>
         </div>

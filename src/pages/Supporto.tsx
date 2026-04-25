@@ -62,7 +62,7 @@ function FAQItem({ item, isOpen, onToggle }: any) {
         <span className="font-semibold text-[#222222]">{item.question}</span>
         <ChevronDown
           size={20}
-          className={`text-[#0ea5e9] transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`text-[#E63946] transition-transform ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
       {isOpen && (
@@ -114,7 +114,7 @@ export default function Supporto() {
                   className="bg-white border border-[#DDDDDD] rounded-2xl p-8 card-hover"
                 >
                   <div className="w-12 h-12 bg-[#F7F7F7] rounded-xl flex items-center justify-center mb-4">
-                    <Icon size={24} className="text-[#0ea5e9]" />
+                    <Icon size={24} className="text-[#E63946]" />
                   </div>
                   <h3 className="text-xl font-semibold text-[#222222] mb-2">
                     {channel.title}

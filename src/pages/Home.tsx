@@ -85,15 +85,15 @@ export default function Home() {
           {/* Micro-stats */}
           <div className="flex flex-col md:flex-row justify-center gap-8 text-center pt-8 border-t border-[#DDDDDD]">
             <div>
-              <p className="text-2xl font-bold text-[#0ea5e9]">+10 anni</p>
+              <p className="text-2xl font-bold text-[#E63946]">+10 anni</p>
               <p className="text-sm text-secondary">Esperienza</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#0ea5e9]">Pubblici e Privati</p>
+              <p className="text-2xl font-bold text-[#E63946]">Pubblici e Privati</p>
               <p className="text-sm text-secondary">Clientela diversificata</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[#0ea5e9]">24h</p>
+              <p className="text-2xl font-bold text-[#E63946]">24h</p>
               <p className="text-sm text-secondary">Assistenza disponibile</p>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function Home() {
                   className="bg-white border border-[#DDDDDD] rounded-2xl p-6 card-hover"
                 >
                   <div className="w-12 h-12 bg-[#F7F7F7] rounded-xl flex items-center justify-center mb-4">
-                    <Icon size={24} className="text-[#0ea5e9]" />
+                    <Icon size={24} className="text-[#E63946]" />
                   </div>
                   <h3 className="text-xl font-semibold text-[#222222] mb-3">
                     {service.title}
@@ -154,7 +154,7 @@ export default function Home() {
               return (
                 <div key={idx} className="text-center">
                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-                    <Icon size={32} className="text-[#0ea5e9]" />
+                    <Icon size={32} className="text-[#E63946]" />
                   </div>
                   <h3 className="text-xl font-semibold text-[#222222] mb-3">
                     {benefit.title}

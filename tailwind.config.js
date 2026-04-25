@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'tw-primary': '#0ea5e9',
+        'tw-primary': '#E63946',
         'tw-dark': '#222222',
         'tw-text-secondary': '#717171',
         'tw-border': '#DDDDDD',

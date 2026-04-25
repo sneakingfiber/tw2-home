@@ -78,7 +78,7 @@ export default function Societa() {
               return (
                 <div key={idx} className="bg-white rounded-2xl p-8 border border-[#DDDDDD] text-center card-hover">
                   <div className="w-16 h-16 bg-[#F7F7F7] rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Icon size={32} className="text-[#0ea5e9]" />
+                    <Icon size={32} className="text-[#E63946]" />
                   </div>
                   <h3 className="text-xl font-semibold text-[#222222] mb-4">
                     {pillar.title}

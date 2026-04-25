@@ -61,7 +61,7 @@ export default function AssistenzaRemota() {
                 <div key={idx} className="flex gap-8 items-start">
                   {/* Left: Icon and number */}
                   <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 bg-[#0ea5e9] rounded-full flex items-center justify-center mb-4 flex-shrink-0">
+                    <div className="w-20 h-20 bg-[#E63946] rounded-full flex items-center justify-center mb-4 flex-shrink-0">
                       <Icon size={40} className="text-white" />
                     </div>
                     {idx < steps.length - 1 && (
@@ -90,28 +90,28 @@ export default function AssistenzaRemota() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex gap-4">
-                <CheckCircle size={24} className="text-[#0ea5e9] flex-shrink-0" />
+                <CheckCircle size={24} className="text-[#E63946] flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-[#222222] mb-2">Velocità</h4>
                   <p className="text-secondary text-sm">Interventi in tempo reale senza attese di spostamento</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <CheckCircle size={24} className="text-[#0ea5e9] flex-shrink-0" />
+                <CheckCircle size={24} className="text-[#E63946] flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-[#222222] mb-2">Sicurezza</h4>
                   <p className="text-secondary text-sm">Connessioni crittografate e conformi agli standard ISO</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <CheckCircle size={24} className="text-[#0ea5e9] flex-shrink-0" />
+                <CheckCircle size={24} className="text-[#E63946] flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-[#222222] mb-2">Efficienza</h4>
                   <p className="text-secondary text-sm">Riduzione dei costi di intervento on-site</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <CheckCircle size={24} className="text-[#0ea5e9] flex-shrink-0" />
+                <CheckCircle size={24} className="text-[#E63946] flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold text-[#222222] mb-2">Trasparenza</h4>
                   <p className="text-secondary text-sm">Report dettagliati e comunicazione costante</p>
