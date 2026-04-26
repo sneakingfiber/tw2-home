@@ -7,7 +7,6 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images, alt = 'Carousel' }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
