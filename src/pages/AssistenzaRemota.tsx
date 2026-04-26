@@ -1,4 +1,4 @@
-import { Phone, Zap, CheckCircle, ArrowRight } from 'lucide-react'
+import { Phone, Zap, CheckCircle } from 'lucide-react'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const steps = [
