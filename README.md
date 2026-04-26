@@ -35,7 +35,41 @@ npm run build
 
 # Preview build locale
 npm run preview
+
+# Deploy su Firebase Hosting
+npm run deploy
 ```
+
+## 🔥 Deploy su Firebase Hosting
+
+### Setup Iniziale (solo prima volta)
+
+```bash
+# Installa Firebase CLI globalmente
+npm install -g firebase-tools
+
+# Login al tuo account Google/Firebase
+firebase login
+
+# Inizializza Firebase (seleziona il progetto "tw2-website")
+firebase init hosting
+```
+
+### Deploy
+
+```bash
+# Build e deploy automatico
+npm run deploy
+
+# Oppure manual:
+npm run build
+firebase deploy
+```
+
+### Configurazione
+- **Progetto Firebase**: `tw2-website`
+- **Directory pubblica**: `dist/`
+- **Rewrite URLs**: Tutte le route vengono reindirizzate a `/index.html` per React Router
 
 ## 📄 Struttura Pagine
 
