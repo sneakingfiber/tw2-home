@@ -51,7 +51,7 @@ npm install -g firebase-tools
 # Login al tuo account Google/Firebase
 firebase login
 
-# Inizializza Firebase (seleziona il progetto "tw2-website")
+# Inizializza Firebase (seleziona il progetto "tecnoworld2-650b1")
 firebase init hosting
 ```
 
@@ -67,7 +67,7 @@ firebase deploy
 ```
 
 ### Configurazione
-- **Progetto Firebase**: `tw2-website`
+- **Progetto Firebase**: `tecnoworld2-650b1`
 - **Directory pubblica**: `dist/`
 - **Rewrite URLs**: Tutte le route vengono reindirizzate a `/index.html` per React Router
 
