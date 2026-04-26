@@ -1,4 +1,5 @@
 import { Phone, Zap, CheckCircle, ArrowRight } from 'lucide-react'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const steps = [
   {
@@ -22,6 +23,13 @@ const steps = [
 ]
 
 export default function AssistenzaRemota() {
+  useDocumentTitle({
+    title: 'Assistenza Remota | TecnoWorld2',
+    description: 'Servizio di assistenza remota 24/7 per risolvere rapidamente problemi tecnici. Diagnostica e intervento da remoto sicuro e certificato.',
+    ogTitle: 'Assistenza Remota - TecnoWorld2',
+    ogDescription: 'Assistenza tecnica remota rapida e sicura. 3 step semplici per risolvere i tuoi problemi.'
+  })
+
   return (
     <>
       {/* Hero */}

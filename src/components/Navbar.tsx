@@ -26,6 +26,9 @@ export default function Navbar() {
           <a href="/#servizi" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
             Servizi
           </a>
+          <Link to="/portfolio" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
+            Portfolio
+          </Link>
           <Link to="/supporto" className="text-[#222222] font-medium hover:text-[#E63946] transition-colors">
             Supporto
           </Link>
@@ -57,6 +60,9 @@ export default function Navbar() {
             <a href="/#servizi" className="text-[#222222] font-medium" onClick={toggleMenu}>
               Servizi
             </a>
+            <Link to="/portfolio" className="text-[#222222] font-medium" onClick={toggleMenu}>
+              Portfolio
+            </Link>
             <Link to="/supporto" className="text-[#222222] font-medium" onClick={toggleMenu}>
               Supporto
             </Link>
