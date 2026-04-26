@@ -1,5 +1,6 @@
 import { Phone, Mail, Zap, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const supportChannels = [
   {
@@ -75,6 +76,13 @@ function FAQItem({ item, isOpen, onToggle }: any) {
 }
 
 export default function Supporto() {
+  useDocumentTitle({
+    title: 'Supporto | TecnoWorld2',
+    description: 'Centro supporto TecnoWorld2: assistenza telefonica 24/7, email e on-site. FAQ e canali di contatto rapidi.',
+    ogTitle: 'Centro Supporto - TecnoWorld2',
+    ogDescription: 'Supporto tecnico 24/7 telefonico, email e on-site. Scopri come contattarci e visualizza le FAQ.'
+  })
+
   const [openFAQ, setOpenFAQ] = useState<number | null>(0)
 
   return (

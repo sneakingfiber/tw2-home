@@ -1,4 +1,5 @@
 import { Zap, Target, MapPin } from 'lucide-react'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const pillars = [
   {
@@ -19,6 +20,13 @@ const pillars = [
 ]
 
 export default function Societa() {
+  useDocumentTitle({
+    title: 'Chi Siamo | TecnoWorld2',
+    description: 'Scopri la storia di TecnoWorld2, azienda italiana leader in soluzioni di reti, sicurezza e automazione con 10+ anni di esperienza.',
+    ogTitle: 'Chi Siamo - TecnoWorld2',
+    ogDescription: 'Azienda B2B specializzata in reti, sicurezza informatica e automazione. Clientela pubblica, industriale e privata.'
+  })
+
   return (
     <>
       {/* Hero */}

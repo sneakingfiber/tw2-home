@@ -32,6 +32,7 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-4">Azienda</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><Link to="/societa" className="hover:text-[#E63946] transition-colors">Chi siamo</Link></li>
+              <li><Link to="/portfolio" className="hover:text-[#E63946] transition-colors">Portfolio</Link></li>
               <li><Link to="/supporto" className="hover:text-[#E63946] transition-colors">Supporto</Link></li>
               <li><Link to="/assistenza-remota" className="hover:text-[#E63946] transition-colors">Assistenza Remota</Link></li>
             </ul>
