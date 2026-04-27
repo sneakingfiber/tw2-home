@@ -232,7 +232,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Milestone Systems */}
             <div className="bg-gradient-to-br from-blue-900/10 to-blue-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-blue-900/30">
-              <img src="/milestone-logo.png" alt="Milestone" className="w-32 h-32 object-contain" />
+              <img src="/milestone-logo.png" alt="Milestone" className="w-40 h-40 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Milestone</p>
                 <p className="text-xs text-blue-900 mt-1 font-medium">Videosorveglianza VMS</p>
@@ -259,7 +259,7 @@ export default function Home() {
 
             {/* Mikrotik */}
             <div className="bg-gradient-to-br from-green-900/10 to-green-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-green-900/30">
-              <img src="/mikrotik-logo.png" alt="Mikrotik" className="w-32 h-32 object-contain" />
+              <img src="/mikrotik-logo.png" alt="Mikrotik" className="w-36 h-36 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Mikrotik</p>
                 <p className="text-xs text-green-900 mt-1 font-medium">Routing & Networking</p>
