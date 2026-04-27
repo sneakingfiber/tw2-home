@@ -1,5 +1,10 @@
 node_modules/
 dist/
+.firebase/
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
+vite.config.d.ts
+vite.config.js
 .DS_Store
 *.log
 npm-debug.log*
@@ -8,3 +13,9 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+
+# Folder with temporary images (use public/ instead)
+immagini_tw2/
+
+# Auto-generated JavaScript files (use .tsx instead)
+src/**/*.js
