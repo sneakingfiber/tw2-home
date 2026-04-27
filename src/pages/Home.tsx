@@ -232,9 +232,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Milestone Systems */}
             <div className="bg-gradient-to-br from-blue-900/10 to-blue-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-blue-900/30">
-              <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
-                <img src="/milestone-logo.png" alt="Milestone" className="w-full h-full object-contain p-2" />
-              </div>
+              <img src="/milestone-logo.png" alt="Milestone" className="w-32 h-32 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Milestone</p>
                 <p className="text-xs text-blue-900 mt-1 font-medium">Videosorveglianza VMS</p>
@@ -243,9 +241,7 @@ export default function Home() {
 
             {/* Axis Communications */}
             <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-yellow-300">
-              <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
-                <img src="/axis-logo.png" alt="Axis" className="w-full h-full object-contain p-2" />
-              </div>
+              <img src="/axis-logo.png" alt="Axis" className="w-32 h-32 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Axis</p>
                 <p className="text-xs text-yellow-900 mt-1 font-medium">Telecamere IP</p>
@@ -254,9 +250,7 @@ export default function Home() {
 
             {/* Ubiquiti */}
             <div className="bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-cyan-300">
-              <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
-                <img src="/ubiquiti-logo.png" alt="Ubiquiti" className="w-full h-full object-contain p-2" />
-              </div>
+              <img src="/ubiquiti-logo.png" alt="Ubiquiti" className="w-32 h-32 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Ubiquiti</p>
                 <p className="text-xs text-cyan-900 mt-1 font-medium">Reti Wireless</p>
@@ -265,9 +259,7 @@ export default function Home() {
 
             {/* Mikrotik */}
             <div className="bg-gradient-to-br from-green-900/10 to-green-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-green-900/30">
-              <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-md overflow-hidden">
-                <img src="/mikrotik-logo.png" alt="Mikrotik" className="w-full h-full object-contain p-2" />
-              </div>
+              <img src="/mikrotik-logo.png" alt="Mikrotik" className="w-32 h-32 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Mikrotik</p>
                 <p className="text-xs text-green-900 mt-1 font-medium">Routing & Networking</p>
