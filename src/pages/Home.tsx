@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award, ChevronLeft, ChevronRight, Server } from 'lucide-react'
 import ContactForm from '../components/ContactForm'
 import ImageCarousel from '../components/ImageCarousel'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -56,6 +56,19 @@ const services = [
     title: "Audio e Video",
     description: "Totem multimediali, videowall, digital signage, teleconferenze ad alta definizione.",
     image: "/tw2-totem.jpg"
+  },
+  {
+    icon: Server,
+    title: "Virtualizzazione",
+    description: "Deployment e gestione di ambienti virtualizzati e containerizzati. Operiamo su infrastrutture Proxmox, ambienti Linux e Windows Server, orchestrazione Kubernetes.",
+    image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800",
+    techs: [
+      { name: "Proxmox", url: "https://unpkg.com/simple-icons@latest/icons/proxmox.svg" },
+      { name: "Docker", url: "https://unpkg.com/simple-icons@latest/icons/docker.svg" },
+      { name: "Kubernetes", url: "https://unpkg.com/simple-icons@latest/icons/kubernetes.svg" },
+      { name: "Linux", url: "https://unpkg.com/simple-icons@latest/icons/linux.svg" },
+      { name: "Windows", isInlineSvg: true }
+    ]
   }
 ]
 
@@ -89,7 +102,7 @@ function ServiceCardCarousel({ service, Icon }: { service: any; Icon: React.Elem
   }
 
   return (
-    <div className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
+    <div className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover" style={{ flexBasis: 'calc(33.333% - 16px)' }}>
       <div className="relative h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
         <img
           src={service.images![currentIndex]}
@@ -207,7 +220,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-6" style={{ maxWidth: '100%' }}>
             {services.map((service, idx) => {
               const Icon = service.icon
               const hasMultipleImages = service.images && service.images.length > 1
@@ -218,6 +231,7 @@ export default function Home() {
                 <div
                   key={idx}
                   className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover"
+                  style={{ flexBasis: 'calc(33.333% - 16px)' }}
                 >
                   <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
                     <img
@@ -236,6 +250,31 @@ export default function Home() {
                     <p className="text-secondary text-sm leading-relaxed">
                       {service.description}
                     </p>
+                    {service.techs && (
+                      <div className="flex flex-wrap gap-4 items-center mt-4 pt-4 border-t border-[#EEEEEE]">
+                        {service.techs.map((tech, idx) => (
+                          <div key={idx} className="flex flex-col items-center gap-1">
+                            {tech.isInlineSvg ? (
+                              <>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                  viewBox="0 0 24 24" fill="#717171">
+                                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                                </svg>
+                              </>
+                            ) : (
+                              <img
+                                src={tech.url}
+                                width={tech.width || 24}
+                                height={tech.height || 24}
+                                alt={tech.name}
+                                style={{ filter: 'invert(60%)' }}
+                              />
+                            )}
+                            <span className="text-[10px] text-[#717171]">{tech.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               )
@@ -289,49 +328,44 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Milestone Systems */}
-            <div className="bg-gradient-to-br from-blue-900/10 to-blue-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-blue-900/30">
-              <img src="/milestone-logo.png" alt="Milestone" className="w-64 h-64 object-contain" />
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
+              <img src="/milestone-logo.png" alt="Milestone" className="max-h-12 max-w-[140px] object-contain mb-3" />
               <div className="text-center">
-                <p className="font-semibold text-tw-dark text-lg">Milestone</p>
-                <p className="text-xs text-blue-900 mt-1 font-medium">Videosorveglianza VMS</p>
+                <p className="font-medium text-[#222222] text-sm">Milestone</p>
               </div>
             </div>
 
             {/* Axis Communications */}
-            <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-yellow-300">
-              <img src="/axis-logo.png" alt="Axis" className="w-32 h-32 object-contain" />
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
+              <img src="/axis-logo.png" alt="Axis" className="max-h-12 max-w-[140px] object-contain mb-3" />
               <div className="text-center">
-                <p className="font-semibold text-tw-dark text-lg">Axis</p>
-                <p className="text-xs text-yellow-900 mt-1 font-medium">Telecamere IP</p>
+                <p className="font-medium text-[#222222] text-sm">Axis</p>
               </div>
             </div>
 
             {/* Ubiquiti */}
-            <div className="bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-cyan-300">
-              <img src="/ubiquiti-logo.png" alt="Ubiquiti" className="w-32 h-32 object-contain" />
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
+              <img src="/ubiquiti-logo.png" alt="Ubiquiti" className="max-h-12 max-w-[140px] object-contain mb-3" />
               <div className="text-center">
-                <p className="font-semibold text-tw-dark text-lg">Ubiquiti</p>
-                <p className="text-xs text-cyan-900 mt-1 font-medium">Reti Wireless</p>
+                <p className="font-medium text-[#222222] text-sm">Ubiquiti</p>
               </div>
             </div>
 
             {/* Mikrotik */}
-            <div className="bg-gradient-to-br from-green-900/10 to-green-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-green-900/30">
-              <img src="/mikrotik-logo.png" alt="Mikrotik" className="w-44 h-44 object-contain" />
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
+              <img src="/mikrotik-logo.png" alt="Mikrotik" className="max-h-12 max-w-[140px] object-contain mb-3" />
               <div className="text-center">
-                <p className="font-semibold text-tw-dark text-lg">Mikrotik</p>
-                <p className="text-xs text-green-900 mt-1 font-medium">Routing & Networking</p>
+                <p className="font-medium text-[#222222] text-sm">Mikrotik</p>
               </div>
             </div>
 
             {/* Targasystem */}
-            <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-orange-300">
-              <img src="/targasystem-logo.jpg" alt="Targasystem" className="w-40 h-40 object-contain" />
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
+              <img src="/targasystem-logo.jpg" alt="Targasystem" className="max-h-12 max-w-[140px] object-contain mb-3" />
               <div className="text-center">
-                <p className="font-semibold text-tw-dark text-lg">Targasystem</p>
-                <p className="text-xs text-orange-900 mt-1 font-medium">LPR system for law enforcement</p>
+                <p className="font-medium text-[#222222] text-sm">Targasystem</p>
               </div>
             </div>
           </div>
