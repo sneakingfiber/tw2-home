@@ -232,7 +232,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Milestone Systems */}
             <div className="bg-gradient-to-br from-blue-900/10 to-blue-900/20 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-blue-900/30">
-              <img src="/milestone-logo.png" alt="Milestone" className="w-48 h-48 object-contain" />
+              <img src="/milestone-logo.png" alt="Milestone" className="w-64 h-64 object-contain" />
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Milestone</p>
                 <p className="text-xs text-blue-900 mt-1 font-medium">Videosorveglianza VMS</p>
