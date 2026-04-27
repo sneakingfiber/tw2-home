@@ -63,10 +63,10 @@ const services = [
     description: "Deployment e gestione di ambienti virtualizzati e containerizzati. Operiamo su infrastrutture Proxmox, ambienti Linux e Windows Server, orchestrazione Kubernetes.",
     image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800",
     techs: [
-      { name: "Proxmox", url: "https://unpkg.com/simple-icons@latest/icons/proxmox.svg" },
-      { name: "Docker", url: "https://unpkg.com/simple-icons@latest/icons/docker.svg" },
-      { name: "Kubernetes", url: "https://unpkg.com/simple-icons@latest/icons/kubernetes.svg" },
-      { name: "Linux", url: "https://unpkg.com/simple-icons@latest/icons/linux.svg" },
+      { name: "Proxmox", url: "https://unpkg.com/simple-icons@latest/icons/proxmox.svg", width: 24, height: 24 },
+      { name: "Docker", url: "https://unpkg.com/simple-icons@latest/icons/docker.svg", width: 24, height: 24 },
+      { name: "Kubernetes", url: "https://unpkg.com/simple-icons@latest/icons/kubernetes.svg", width: 24, height: 24 },
+      { name: "Linux", url: "https://unpkg.com/simple-icons@latest/icons/linux.svg", width: 24, height: 24 },
       { name: "Windows", isInlineSvg: true }
     ]
   }
