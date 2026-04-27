@@ -13,3 +13,9 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+
+# Folder with temporary images (use public/ instead)
+immagini_tw2/
+
+# Auto-generated JavaScript files (use .tsx instead)
+src/**/*.js
