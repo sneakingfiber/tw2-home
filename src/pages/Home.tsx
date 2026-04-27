@@ -77,22 +77,22 @@ const benefits = [
   }
 ]
 
-function ServiceCardCarousel({ service, Icon }) {
+function ServiceCardCarousel({ service, Icon }: { service: any; Icon: React.ElementType }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? service.images.length - 1 : prev - 1))
+    setCurrentIndex((prev) => (prev === 0 ? service.images!.length - 1 : prev - 1))
   }
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev === service.images.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) => (prev === service.images!.length - 1 ? 0 : prev + 1))
   }
 
   return (
     <div className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
       <div className="relative h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
         <img
-          src={service.images[currentIndex]}
+          src={service.images![currentIndex]}
           alt={service.title}
           className="w-full h-full object-cover"
         />
