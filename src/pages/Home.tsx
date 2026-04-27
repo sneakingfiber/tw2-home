@@ -1,16 +1,17 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award } from 'lucide-react'
+import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award, ChevronLeft, ChevronRight } from 'lucide-react'
 import ContactForm from '../components/ContactForm'
 import ImageCarousel from '../components/ImageCarousel'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const heroImages = [
-  '/reti.jpg',
-  '/videosorveglianza.jpg',
-  '/prodotto.jpg',
-  '/automazione.jpg',
-  '/tw2-totem.jpg',
-  '/videocitofono.jpg'
+  '/installazione-protect.jpeg',
+  '/manutenzione-server.jpeg',
+  '/network-staging.jpeg',
+  '/quadretto-boss.jpeg',
+  '/rack-alassio.jpeg',
+  '/ubiquiti-radio.jpeg'
 ]
 
 const services = [
@@ -28,7 +29,7 @@ const services = [
   },
   {
     icon: Monitor,
-    title: "Informatica",
+    title: "Consulenza Informatica",
     description: "Vendita, assistenza, consulenza, virtualizzazione, networking e infrastrutture IT.",
     image: "/prodotto.jpg"
   },
@@ -42,7 +43,13 @@ const services = [
     icon: Phone,
     title: "Telefonia",
     description: "Centralini telefonici, sistemi VoIP, soluzioni di comunicazione integrate.",
-    image: "/videocitofono.jpg"
+    images: ["/videocitofono.jpg", "/ubiquiti-phone.png"]
+  },
+  {
+    icon: Camera,
+    title: "Targasystem",
+    description: "Sistema LPR per l'identificazione automatica delle targhe automezzi, a supporto delle forze dell'ordine.",
+    image: "/targasystem-cam3mpx.png"
   },
   {
     icon: Tv2,
@@ -70,6 +77,55 @@ const benefits = [
   }
 ]
 
+function ServiceCardCarousel({ service, Icon }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? service.images.length - 1 : prev - 1))
+  }
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === service.images.length - 1 ? 0 : prev + 1))
+  }
+
+  return (
+    <div className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
+      <div className="relative h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
+        <img
+          src={service.images[currentIndex]}
+          alt={service.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 flex items-center justify-between px-2">
+          <button
+            onClick={goToPrevious}
+            className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={goToNext}
+            className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      </div>
+      <div className="p-4">
+        <div className="flex items-center gap-3 mb-2">
+          <h3 className="text-lg font-semibold text-[#222222]">
+            {service.title}
+          </h3>
+          <Icon size={20} className="text-[#E63946]" />
+        </div>
+        <p className="text-secondary text-sm leading-relaxed">
+          {service.description}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   useDocumentTitle({
     title: 'TecnoWorld2 | Soluzioni Innovative di Safety e Security',
@@ -88,17 +144,17 @@ export default function Home() {
             {/* Left Content */}
             <div>
               <div className="mb-6 inline-block">
-                <div className="badge-pill">
-                  Reti · Sicurezza · Innovazione
+                <div className="bg-white border border-[#DDDDDD] text-[#717171] rounded-full px-4 py-2 text-sm font-medium">
+                  System Integrator · Liguria
                 </div>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-[#222222] mb-6 leading-tight">
-                Realizziamo soluzioni innovative a problemi di safety e security
+                Infrastrutture di sicurezza per enti pubblici e privati
               </h1>
 
               <p className="text-lg text-secondary mb-8 leading-relaxed">
-                Esperienza pluriennale nell'implementazione di nuovi impianti e nell'integrazione con sistemi esistenti in contesto pubblico, industriale e privato.
+                Progettiamo e installiamo sistemi di videosorveglianza, reti radio e networking per Comuni, Polizia Municipale e aziende private. Operiamo su tutta la Liguria.
               </p>
 
               {/* CTAs */}
@@ -106,8 +162,8 @@ export default function Home() {
                 <a href="#servizi" className="btn-primary">
                   Scopri i servizi
                 </a>
-                <Link to="/societa" className="btn-secondary">
-                  Chi siamo
+                <Link to="/portfolio" className="bg-white border border-[#222222] text-[#222222] rounded-full px-6 py-3 font-semibold inline-flex items-center justify-center hover:bg-[#F7F7F7] transition-colors duration-300">
+                  Progetti reali
                 </Link>
               </div>
 
@@ -144,7 +200,7 @@ export default function Home() {
         <div className="container-max">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#222222] mb-4">
-              I servizi offerti
+              Servizi
             </h2>
             <p className="text-secondary max-w-2xl mx-auto">
               Soluzioni complete e integrate per la tua infrastruttura di rete e sicurezza
@@ -154,25 +210,29 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, idx) => {
               const Icon = service.icon
-              return (
+              const hasMultipleImages = service.images && service.images.length > 1
+
+              return hasMultipleImages ? (
+                <ServiceCardCarousel key={idx} service={service} Icon={Icon} />
+              ) : (
                 <div
                   key={idx}
                   className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover"
                 >
                   <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
                     <img
-                      src={service.image}
+                      src={service.image || service.images?.[0]}
                       alt={service.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="p-6">
-                    <div className="w-12 h-12 bg-[#F7F7F7] rounded-xl flex items-center justify-center mb-4">
-                      <Icon size={24} className="text-[#E63946]" />
+                  <div className="p-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-lg font-semibold text-[#222222]">
+                        {service.title}
+                      </h3>
+                      <Icon size={20} className="text-[#E63946]" />
                     </div>
-                    <h3 className="text-xl font-semibold text-[#222222] mb-3">
-                      {service.title}
-                    </h3>
                     <p className="text-secondary text-sm leading-relaxed">
                       {service.description}
                     </p>
@@ -263,6 +323,15 @@ export default function Home() {
               <div className="text-center">
                 <p className="font-semibold text-tw-dark text-lg">Mikrotik</p>
                 <p className="text-xs text-green-900 mt-1 font-medium">Routing & Networking</p>
+              </div>
+            </div>
+
+            {/* Targasystem */}
+            <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 hover:shadow-lg transition-shadow duration-300 border border-orange-300">
+              <img src="/targasystem-logo.jpg" alt="Targasystem" className="w-40 h-40 object-contain" />
+              <div className="text-center">
+                <p className="font-semibold text-tw-dark text-lg">Targasystem</p>
+                <p className="text-xs text-orange-900 mt-1 font-medium">LPR system for law enforcement</p>
               </div>
             </div>
           </div>
