@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award, ChevronLeft, ChevronRight, Server } from 'lucide-react'
+import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award, Server } from 'lucide-react'
 import ContactForm from '../components/ContactForm'
 import ImageCarousel from '../components/ImageCarousel'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -18,55 +17,47 @@ const services = [
   {
     icon: Network,
     title: "Rete Dati e Connettività",
-    description: "Sopralluogo gratuito, cablaggio, UPS, ponti radio, apparati attivi e passivi, configurazioni custom.",
     image: "/reti.jpg"
   },
   {
     icon: Camera,
     title: "Videosorveglianza",
-    description: "Telecamere IP, webcam, antintrusione, software ad hoc per monitoraggio e security.",
     image: "/ip-camera.png"
   },
   {
     icon: Monitor,
     title: "Consulenza Informatica",
-    description: "Vendita, assistenza, consulenza, virtualizzazione, networking e infrastrutture IT.",
     image: "/prodotto.jpg"
   },
   {
     icon: Cpu,
     title: "Automazione",
-    description: "Automazione privata e aziendale, programmazione PC e PLC per processi industriali.",
     image: "/automazione.jpg"
   },
   {
     icon: Phone,
     title: "Telefonia",
-    description: "Centralini telefonici, sistemi VoIP, soluzioni di comunicazione integrate.",
-    images: ["/videocitofono.jpg", "/ubiquiti-phone.png"]
+    image: "/videocitofono.jpg"
   },
   {
     icon: Camera,
     title: "Targasystem",
-    description: "Sistema LPR per l'identificazione automatica delle targhe automezzi, a supporto delle forze dell'ordine.",
     image: "/targasystem-cam3mpx.png"
   },
   {
     icon: Tv2,
     title: "Audio e Video",
-    description: "Totem multimediali, videowall, digital signage, teleconferenze ad alta definizione.",
     image: "/tw2-totem.jpg"
   },
   {
     icon: Server,
     title: "Virtualizzazione",
-    description: "Deployment e gestione di ambienti virtualizzati e containerizzati. Operiamo su infrastrutture Proxmox, ambienti Linux e Windows Server, orchestrazione Kubernetes.",
     image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800",
     techs: [
-      { name: "Proxmox", url: "https://unpkg.com/simple-icons@latest/icons/proxmox.svg", width: 24, height: 24 },
-      { name: "Docker", url: "https://unpkg.com/simple-icons@latest/icons/docker.svg", width: 24, height: 24 },
-      { name: "Kubernetes", url: "https://unpkg.com/simple-icons@latest/icons/kubernetes.svg", width: 24, height: 24 },
-      { name: "Linux", url: "https://unpkg.com/simple-icons@latest/icons/linux.svg", width: 24, height: 24 },
+      { name: "Proxmox", url: "https://unpkg.com/simple-icons@latest/icons/proxmox.svg" },
+      { name: "Docker", url: "https://unpkg.com/simple-icons@latest/icons/docker.svg" },
+      { name: "Kubernetes", url: "https://unpkg.com/simple-icons@latest/icons/kubernetes.svg" },
+      { name: "Linux", url: "https://unpkg.com/simple-icons@latest/icons/linux.svg" },
       { name: "Windows", isInlineSvg: true }
     ]
   }
@@ -89,55 +80,6 @@ const benefits = [
     description: "Esperienza consolidata con Amministrazioni, aziende industriali e realtà private."
   }
 ]
-
-function ServiceCardCarousel({ service, Icon }: { service: any; Icon: React.ElementType }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? service.images!.length - 1 : prev - 1))
-  }
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === service.images!.length - 1 ? 0 : prev + 1))
-  }
-
-  return (
-    <div className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover" style={{ flexBasis: 'calc(33.333% - 16px)' }}>
-      <div className="relative h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
-        <img
-          src={service.images![currentIndex]}
-          alt={service.title}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-between px-2">
-          <button
-            onClick={goToPrevious}
-            className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={goToNext}
-            className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
-      </div>
-      <div className="p-4">
-        <div className="flex items-center gap-3 mb-2">
-          <h3 className="text-lg font-semibold text-[#222222]">
-            {service.title}
-          </h3>
-          <Icon size={20} className="text-[#E63946]" />
-        </div>
-        <p className="text-secondary text-sm leading-relaxed">
-          {service.description}
-        </p>
-      </div>
-    </div>
-  )
-}
 
 export default function Home() {
   useDocumentTitle({
@@ -220,65 +162,145 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6" style={{ maxWidth: '100%' }}>
-            {services.map((service, idx) => {
-              const Icon = service.icon
-              const hasMultipleImages = service.images && service.images.length > 1
+          {/* Formazione 3-2-2-1 */}
+          <div className="space-y-6">
+            {/* Prima riga: 3 servizi */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {services.slice(0, 3).map((service, idx) => {
+                const Icon = service.icon
 
-              return hasMultipleImages ? (
-                <ServiceCardCarousel key={idx} service={service} Icon={Icon} />
-              ) : (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover"
-                  style={{ flexBasis: 'calc(33.333% - 16px)' }}
-                >
-                  <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
-                    <img
-                      src={service.image || service.images?.[0]}
-                      alt={service.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold text-[#222222]">
-                        {service.title}
-                      </h3>
-                      <Icon size={20} className="text-[#E63946]" />
+                return (
+                  <div key={idx} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
+                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <p className="text-secondary text-sm leading-relaxed">
-                      {service.description}
-                    </p>
-                    {service.techs && (
-                      <div className="flex flex-wrap gap-4 items-center mt-4 pt-4 border-t border-[#EEEEEE]">
-                        {service.techs.map((tech, idx) => (
-                          <div key={idx} className="flex flex-col items-center gap-1">
-                            {tech.isInlineSvg ? (
-                              <>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                  viewBox="0 0 24 24" fill="#717171">
+                    <div className="p-4">
+                      <div className="flex items-center gap-3 justify-center">
+                        <Icon size={20} className="text-[#E63946]" />
+                        <h3 className="text-lg font-semibold text-[#222222]">
+                          {service.title}
+                        </h3>
+                      </div>
+                      {service.techs && (
+                        <div className="flex flex-wrap gap-4 items-center justify-center mt-4 pt-4 border-t border-[#EEEEEE]">
+                          {service.techs.map((tech, techIdx) => (
+                            <div key={techIdx} className="flex flex-col items-center gap-1">
+                              {tech.isInlineSvg ? (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#717171">
                                   <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
                                 </svg>
-                              </>
-                            ) : (
-                              <img
-                                src={tech.url}
-                                width={tech.width || 24}
-                                height={tech.height || 24}
-                                alt={tech.name}
-                                style={{ filter: 'invert(60%)' }}
-                              />
-                            )}
-                            <span className="text-[10px] text-[#717171]">{tech.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                              ) : (
+                                <img src={tech.url} width="24" height="24" alt={tech.name} style={{ filter: 'invert(60%)' }} />
+                              )}
+                              <span className="text-[10px] text-[#717171]">{tech.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
+
+            {/* Seconda riga: 2 servizi */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {services.slice(3, 5).map((service, idx) => {
+                const Icon = service.icon
+
+                return (
+                  <div key={idx + 3} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
+                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-center gap-3 justify-center">
+                        <Icon size={20} className="text-[#E63946]" />
+                        <h3 className="text-lg font-semibold text-[#222222]">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Terza riga: 2 servizi */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {services.slice(5, 7).map((service, idx) => {
+                const Icon = service.icon
+                return (
+                  <div key={idx + 5} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
+                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-center gap-3 justify-center">
+                        <Icon size={20} className="text-[#E63946]" />
+                        <h3 className="text-lg font-semibold text-[#222222]">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Quarta riga: 1 servizio (Virtualizzazione) */}
+            <div className="grid grid-cols-1 gap-6 max-w-lg mx-auto">
+              {services.slice(7, 8).map((service, idx) => {
+                const Icon = service.icon
+                return (
+                  <div key={idx + 7} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
+                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <div className="flex items-center gap-3 justify-center mb-4">
+                        <Icon size={20} className="text-[#E63946]" />
+                        <h3 className="text-lg font-semibold text-[#222222]">
+                          {service.title}
+                        </h3>
+                      </div>
+                      {service.techs && (
+                        <div className="flex flex-wrap gap-4 items-center justify-center pt-4 border-t border-[#EEEEEE]">
+                          {service.techs.map((tech, techIdx) => (
+                            <div key={techIdx} className="flex flex-col items-center gap-1">
+                              {tech.isInlineSvg ? (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#717171">
+                                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                                </svg>
+                              ) : (
+                                <img src={tech.url} width="24" height="24" alt={tech.name} style={{ filter: 'invert(60%)' }} />
+                              )}
+                              <span className="text-[10px] text-[#717171]">{tech.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -328,45 +350,35 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
             {/* Milestone Systems */}
-            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
-              <img src="/milestone-logo.png" alt="Milestone" className="max-h-12 max-w-[140px] object-contain mb-3" />
-              <div className="text-center">
-                <p className="font-medium text-[#222222] text-sm">Milestone</p>
-              </div>
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 w-48 h-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow duration-200">
+              <img src="/milestone-logo.png" alt="Milestone" className="max-h-12 max-w-[120px] object-contain mb-3" />
+              <p className="font-medium text-[#222222] text-sm">Milestone</p>
             </div>
 
             {/* Axis Communications */}
-            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
-              <img src="/axis-logo.png" alt="Axis" className="max-h-12 max-w-[140px] object-contain mb-3" />
-              <div className="text-center">
-                <p className="font-medium text-[#222222] text-sm">Axis</p>
-              </div>
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 w-48 h-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow duration-200">
+              <img src="/axis-logo.png" alt="Axis" className="max-h-12 max-w-[120px] object-contain mb-3" />
+              <p className="font-medium text-[#222222] text-sm">Axis</p>
             </div>
 
             {/* Ubiquiti */}
-            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
-              <img src="/ubiquiti-logo.png" alt="Ubiquiti" className="max-h-12 max-w-[140px] object-contain mb-3" />
-              <div className="text-center">
-                <p className="font-medium text-[#222222] text-sm">Ubiquiti</p>
-              </div>
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 w-48 h-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow duration-200">
+              <img src="/ubiquiti-logo.png" alt="Ubiquiti" className="max-h-12 max-w-[120px] object-contain mb-3" />
+              <p className="font-medium text-[#222222] text-sm">Ubiquiti</p>
             </div>
 
             {/* Mikrotik */}
-            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
-              <img src="/mikrotik-logo.png" alt="Mikrotik" className="max-h-12 max-w-[140px] object-contain mb-3" />
-              <div className="text-center">
-                <p className="font-medium text-[#222222] text-sm">Mikrotik</p>
-              </div>
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 w-48 h-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow duration-200">
+              <img src="/mikrotik-logo.png" alt="Mikrotik" className="max-h-12 max-w-[120px] object-contain mb-3" />
+              <p className="font-medium text-[#222222] text-sm">Mikrotik</p>
             </div>
 
             {/* Targasystem */}
-            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 h-40 flex flex-col items-center justify-center hover:shadow-sm hover:scale-[1.02] transition-transform duration-200">
-              <img src="/targasystem-logo.jpg" alt="Targasystem" className="max-h-12 max-w-[140px] object-contain mb-3" />
-              <div className="text-center">
-                <p className="font-medium text-[#222222] text-sm">Targasystem</p>
-              </div>
+            <div className="bg-white border border-[#EEEEEE] rounded-2xl p-6 w-48 h-40 flex flex-col items-center justify-center hover:shadow-md transition-shadow duration-200">
+              <img src="/targasystem-logo.jpg" alt="Targasystem" className="max-h-12 max-w-[120px] object-contain mb-3" />
+              <p className="font-medium text-[#222222] text-sm">Targasystem</p>
             </div>
           </div>
 
