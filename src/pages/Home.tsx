@@ -1,63 +1,73 @@
 import { Link } from 'react-router-dom'
 import { Network, Camera, Monitor, Cpu, Phone, Tv2, Shield, Wrench, Users, Award, Server } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import ContactForm from '../components/ContactForm'
 import ImageCarousel from '../components/ImageCarousel'
+import ServiceCard from '../components/ServiceCard'
+import type { ServiceTech } from '../components/ServiceCard'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const heroImages = [
-  '/installazione-protect.jpeg',
-  '/manutenzione-server.jpeg',
-  '/network-staging.jpeg',
-  '/quadretto-boss.jpeg',
-  '/rack-alassio.jpeg',
-  '/ubiquiti-radio.jpeg'
+  '/installazione-protect.webp',
+  '/manutenzione-server.webp',
+  '/network-staging.webp',
+  '/quadretto-boss.webp',
+  '/rack-alassio.webp',
+  '/ubiquiti-radio.webp'
 ]
 
-const services = [
+interface Service {
+  icon: LucideIcon
+  title: string
+  image: string
+  techs?: ServiceTech[]
+}
+
+const services: Service[] = [
   {
     icon: Network,
     title: "Rete Dati e Connettività",
-    image: "/reti.jpg"
+    image: "/reti.webp"
   },
   {
     icon: Camera,
     title: "Videosorveglianza",
-    image: "/ip-camera.png"
+    image: "/ip-camera.webp"
   },
   {
     icon: Monitor,
     title: "Consulenza Informatica",
-    image: "/prodotto.jpg"
+    image: "/prodotto.webp"
   },
   {
     icon: Cpu,
     title: "Automazione",
-    image: "/automazione.jpg"
+    image: "/automazione.webp"
   },
   {
     icon: Phone,
     title: "Telefonia",
-    image: "/videocitofono.jpg"
+    image: "/videocitofono.webp"
   },
   {
     icon: Camera,
     title: "Targasystem",
-    image: "/targasystem-cam3mpx.png"
+    image: "/targasystem-cam3mpx.webp"
   },
   {
     icon: Tv2,
     title: "Audio e Video",
-    image: "/tw2-totem.jpg"
+    image: "/tw2-totem.webp"
   },
   {
     icon: Server,
     title: "Virtualizzazione",
-    image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800",
+    image: "/virtualizzazione.webp",
     techs: [
-      { name: "Proxmox", url: "https://unpkg.com/simple-icons@latest/icons/proxmox.svg" },
-      { name: "Docker", url: "https://unpkg.com/simple-icons@latest/icons/docker.svg" },
-      { name: "Kubernetes", url: "https://unpkg.com/simple-icons@latest/icons/kubernetes.svg" },
-      { name: "Linux", url: "https://unpkg.com/simple-icons@latest/icons/linux.svg" },
+      { name: "Proxmox", url: "/icons/proxmox.svg" },
+      { name: "Docker", url: "/icons/docker.svg" },
+      { name: "Kubernetes", url: "/icons/kubernetes.svg" },
+      { name: "Linux", url: "/icons/linux.svg" },
       { name: "Windows", isInlineSvg: true }
     ]
   }
@@ -151,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="servizi" className="py-20 bg-white">
+      <section id="servizi" className="py-20 bg-white scroll-mt-20">
         <div className="container-max">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#222222] mb-4">
@@ -166,140 +176,30 @@ export default function Home() {
           <div className="space-y-6">
             {/* Prima riga: 3 servizi */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {services.slice(0, 3).map((service, idx) => {
-                const Icon = service.icon
-
-                return (
-                  <div key={idx} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
-                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-center gap-3 justify-center">
-                        <Icon size={20} className="text-[#E63946]" />
-                        <h3 className="text-lg font-semibold text-[#222222]">
-                          {service.title}
-                        </h3>
-                      </div>
-                      {service.techs && (
-                        <div className="flex flex-wrap gap-4 items-center justify-center mt-4 pt-4 border-t border-[#EEEEEE]">
-                          {service.techs.map((tech, techIdx) => (
-                            <div key={techIdx} className="flex flex-col items-center gap-1">
-                              {tech.isInlineSvg ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#717171">
-                                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
-                                </svg>
-                              ) : (
-                                <img src={tech.url} width="24" height="24" alt={tech.name} style={{ filter: 'invert(60%)' }} />
-                              )}
-                              <span className="text-[10px] text-[#717171]">{tech.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
+              {services.slice(0, 3).map((service) => (
+                <ServiceCard key={service.title} {...service} />
+              ))}
             </div>
 
             {/* Seconda riga: 2 servizi */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {services.slice(3, 5).map((service, idx) => {
-                const Icon = service.icon
-
-                return (
-                  <div key={idx + 3} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
-                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-center gap-3 justify-center">
-                        <Icon size={20} className="text-[#E63946]" />
-                        <h3 className="text-lg font-semibold text-[#222222]">
-                          {service.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
+              {services.slice(3, 5).map((service) => (
+                <ServiceCard key={service.title} {...service} />
+              ))}
             </div>
 
             {/* Terza riga: 2 servizi */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {services.slice(5, 7).map((service, idx) => {
-                const Icon = service.icon
-                return (
-                  <div key={idx + 5} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
-                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-center gap-3 justify-center">
-                        <Icon size={20} className="text-[#E63946]" />
-                        <h3 className="text-lg font-semibold text-[#222222]">
-                          {service.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
+              {services.slice(5, 7).map((service) => (
+                <ServiceCard key={service.title} {...service} />
+              ))}
             </div>
 
             {/* Quarta riga: 1 servizio (Virtualizzazione) */}
             <div className="grid grid-cols-1 gap-6 max-w-lg mx-auto">
-              {services.slice(7, 8).map((service, idx) => {
-                const Icon = service.icon
-                return (
-                  <div key={idx + 7} className="bg-white border border-[#DDDDDD] rounded-2xl overflow-hidden card-hover">
-                    <div className="h-48 w-full bg-gradient-to-br from-[#F7F7F7] to-[#EEEEEE] overflow-hidden">
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-center gap-3 justify-center mb-4">
-                        <Icon size={20} className="text-[#E63946]" />
-                        <h3 className="text-lg font-semibold text-[#222222]">
-                          {service.title}
-                        </h3>
-                      </div>
-                      {service.techs && (
-                        <div className="flex flex-wrap gap-4 items-center justify-center pt-4 border-t border-[#EEEEEE]">
-                          {service.techs.map((tech, techIdx) => (
-                            <div key={techIdx} className="flex flex-col items-center gap-1">
-                              {tech.isInlineSvg ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#717171">
-                                  <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
-                                </svg>
-                              ) : (
-                                <img src={tech.url} width="24" height="24" alt={tech.name} style={{ filter: 'invert(60%)' }} />
-                              )}
-                              <span className="text-[10px] text-[#717171]">{tech.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
+              {services.slice(7, 8).map((service) => (
+                <ServiceCard key={service.title} {...service} />
+              ))}
             </div>
           </div>
         </div>
@@ -404,7 +304,7 @@ export default function Home() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 bg-white">
+      <section id="contatti" className="py-20 bg-white scroll-mt-20">
         <div className="container-max">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">

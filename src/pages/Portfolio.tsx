@@ -3,7 +3,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const caseStudies = [
   {
-    image: '/reti.jpg',
+    image: '/reti.webp',
     category: 'Reti Dati',
     title: 'Infrastruttura di rete per Headquarter aziendale',
     description: 'Progettazione e realizzazione di una moderna infrastruttura di rete dati con redundanza e failover per una grande azienda industriale ligure. Implementazione di firewall avanzati e sistemi di monitoring 24/7.',
@@ -15,7 +15,7 @@ const caseStudies = [
     client: 'Azienda Industriale (2023)'
   },
   {
-    image: '/videosorveglianza.jpg',
+    image: '/videosorveglianza.webp',
     category: 'Videosorveglianza',
     title: 'Sistema videosorveglianza intelligente per struttura ospedaliera',
     description: 'Installazione di 120 telecamere IP ad alta risoluzione con analytics video e intelligenza artificiale per sicurezza perimetrale e interna. Sistema centralizzato di storage e monitoraggio con accesso multi-sede.',
@@ -27,7 +27,7 @@ const caseStudies = [
     client: 'Struttura Sanitaria (2023)'
   },
   {
-    image: '/automazione.jpg',
+    image: '/automazione.webp',
     category: 'Automazione',
     title: 'Automazione illuminazione e clima per edificio commerciale',
     description: 'Sistema di automazione integrato per il controllo di illuminazione, riscaldamento e climatizzazione in un moderno centro commerciale. Programmazione PLC custom per ottimizzazione consumi energetici e comfort abitativo.',
@@ -39,7 +39,7 @@ const caseStudies = [
     client: 'Centro Commerciale (2023)'
   },
   {
-    image: '/prodotto.jpg',
+    image: '/prodotto.webp',
     category: 'Informatica',
     title: 'Migrazione infrastruttura IT verso cloud ibrido',
     description: 'Progettazione e implementazione di una strategia di cloud ibrido con virtualizzazione completa dei server aziendali. Migrazione zero-downtime di 50+ workload critici con nuova architettura disaster recovery.',
@@ -51,7 +51,7 @@ const caseStudies = [
     client: 'PMI Manifatturiera (2022)'
   },
   {
-    image: '/tw2-totem.jpg',
+    image: '/tw2-totem.webp',
     category: 'Audio & Video',
     title: 'Totem multimediali per showroom aziendale',
     description: 'Installazione di totem interattivi touchscreen per la presentazione di prodotti e servizi. Sistema di content management centralizzato con aggiornamento remoto da headquarter.',
@@ -63,7 +63,7 @@ const caseStudies = [
     client: 'Showroom Aziendale (2023)'
   },
   {
-    image: '/videocitofono.jpg',
+    image: '/videocitofono.webp',
     category: 'Telefonia',
     title: 'Centralino VoIP per struttura ospedaliera',
     description: 'Implementazione di centralino telefonico VoIP con integrazione con sistemi di emergency call. Supporto per 200+ estensioni con roaming mobile e call recording integrato.',
@@ -154,7 +154,7 @@ export default function Portfolio() {
               Contatta il nostro team per una consulenza gratuita e scopri come possiamo aiutare la tua azienda.
             </p>
             <a
-              href="/#"
+              href="/#contatti"
               className="inline-flex items-center gap-2 bg-white text-tw-primary font-semibold py-3 px-8 rounded-full hover:bg-tw-bg-alt transition"
             >
               Richiedi una consulenza

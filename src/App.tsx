@@ -7,6 +7,8 @@ import Societa from './pages/Societa'
 import Supporto from './pages/Supporto'
 import AssistenzaRemota from './pages/AssistenzaRemota'
 import Portfolio from './pages/Portfolio'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/supporto" element={<Supporto />} />
             <Route path="/assistenza-remota" element={<AssistenzaRemota />} />
             <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

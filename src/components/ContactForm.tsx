@@ -1,5 +1,9 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { submitContactRequest } from '../lib/firebase'
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 interface FormData {
   name: string
@@ -38,6 +42,7 @@ export default function ContactForm() {
     message: ''
   })
 
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const validateForm = (): boolean => {
@@ -45,7 +50,7 @@ export default function ContactForm() {
       setStatus({ type: 'error', message: 'Per favore inserisci il tuo nome' })
       return false
     }
-    if (!formData.email.trim() || !formData.email.includes('@')) {
+    if (!EMAIL_REGEX.test(formData.email.trim())) {
       setStatus({ type: 'error', message: 'Per favore inserisci una email valida' })
       return false
     }
@@ -59,6 +64,10 @@ export default function ContactForm() {
     }
     if (!formData.message.trim() || formData.message.trim().length < 10) {
       setStatus({ type: 'error', message: 'Il messaggio deve contenere almeno 10 caratteri' })
+      return false
+    }
+    if (!privacyAccepted) {
+      setStatus({ type: 'error', message: 'Per inviare la richiesta devi accettare la Privacy Policy' })
       return false
     }
     return true
@@ -86,11 +95,7 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     try {
-      // Simulating form submission - replace with actual backend endpoint
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      // Log form data (replace with actual API call)
-      console.log('Form submitted:', formData)
+      await submitContactRequest(formData)
 
       setStatus({
         type: 'success',
@@ -105,16 +110,13 @@ export default function ContactForm() {
         service: '',
         message: ''
       })
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setStatus({ type: 'idle', message: '' })
-      }, 5000)
+      setPrivacyAccepted(false)
 
     } catch (error) {
+      console.error('Errore invio modulo di contatto:', error)
       setStatus({
         type: 'error',
-        message: 'Si è verificato un errore. Per favore riprova più tardi.'
+        message: 'Si è verificato un errore durante l\'invio. Riprova più tardi oppure contattaci direttamente a info@tw2.eu o al 334-8213252.'
       })
     } finally {
       setIsSubmitting(false)
@@ -214,6 +216,29 @@ export default function ContactForm() {
           required
         />
       </div>
+
+      {/* Privacy Consent */}
+      <label className="flex items-start gap-3 cursor-pointer">
+        <input
+          type="checkbox"
+          checked={privacyAccepted}
+          onChange={(e) => {
+            setPrivacyAccepted(e.target.checked)
+            if (status.type === 'error') {
+              setStatus({ type: 'idle', message: '' })
+            }
+          }}
+          className="mt-1 h-4 w-4 accent-tw-primary"
+          required
+        />
+        <span className="text-sm text-tw-text-secondary">
+          Ho letto la{' '}
+          <Link to="/privacy" className="text-tw-primary hover:underline" target="_blank">
+            Privacy Policy
+          </Link>{' '}
+          e acconsento al trattamento dei miei dati personali per rispondere alla mia richiesta. *
+        </span>
+      </label>
 
       {/* Status Messages */}
       {status.type === 'success' && (

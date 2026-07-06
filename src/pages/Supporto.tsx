@@ -175,7 +175,7 @@ export default function Supporto() {
           <p className="text-secondary max-w-2xl mx-auto mb-8">
             Contatta direttamente il nostro team, siamo sempre pronti ad aiutarti.
           </p>
-          <a href="mailto:info@tw2.eu" className="btn-primary">
+          <a href="/#contatti" className="btn-primary">
             Contattaci
           </a>
         </div>

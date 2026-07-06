@@ -10,7 +10,8 @@ const breadcrumbMap: Record<string, BreadcrumbItem[]> = {
   '/societa': [{ label: 'Chi siamo', path: '/societa' }],
   '/supporto': [{ label: 'Supporto', path: '/supporto' }],
   '/assistenza-remota': [{ label: 'Assistenza Remota', path: '/assistenza-remota' }],
-  '/portfolio': [{ label: 'Portfolio', path: '/portfolio' }]
+  '/portfolio': [{ label: 'Portfolio', path: '/portfolio' }],
+  '/privacy': [{ label: 'Privacy Policy', path: '/privacy' }]
 }
 
 export default function Breadcrumbs() {
