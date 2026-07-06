@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Il modulo di contatto del sito può solo creare richieste, mai leggerle
+    // o modificarle. La lettura avviene dalla console Firebase o tramite
+    // l'estensione "Trigger Email" (Admin SDK, non soggetta alle regole).
+    match /contact-requests/{requestId} {
+      allow create: if request.resource.data.form.name is string
+        && request.resource.data.form.name.size() > 0
+        && request.resource.data.form.name.size() <= 200
+        && request.resource.data.form.email is string
+        && request.resource.data.form.email.matches('.+@.+\\..+')
+        && request.resource.data.form.phone is string
+        && request.resource.data.form.phone.size() > 0
+        && request.resource.data.form.phone.size() <= 50
+        && request.resource.data.form.service is string
+        && request.resource.data.form.message is string
+        && request.resource.data.form.message.size() >= 10
+        && request.resource.data.form.message.size() <= 5000
+        && request.resource.data.to == ['info@tw2.eu'];
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

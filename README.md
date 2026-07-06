@@ -171,3 +171,29 @@ tw2-home/
 ---
 
 **Realizzato con Vite + React + Tailwind CSS** ✨
+
+## 📬 Modulo di contatto (Firestore + Trigger Email)
+
+Il modulo "Contattaci" in home page salva le richieste nella collezione Firestore
+`contact-requests` e le invia via email a **info@tw2.eu** tramite l'estensione
+Firebase **Trigger Email**. Per attivarlo servono tre passaggi una tantum:
+
+1. **Variabili d'ambiente** — copia `.env.example` in `.env` e inserisci i valori
+   della web app Firebase (Console → Impostazioni progetto → Generali → Le tue app).
+   Se non esiste ancora un'app web, creane una. Ricorda di rifare `npm run build`
+   dopo ogni modifica al `.env`.
+2. **Firestore** — abilita Cloud Firestore dalla console (modalità produzione),
+   poi pubblica le regole di sicurezza incluse nel repo:
+   ```bash
+   firebase deploy --only firestore:rules
+   ```
+3. **Estensione Trigger Email** — dalla console Firebase installa l'estensione
+   "Trigger Email from Firestore" e configurala con:
+   - **Email documents collection**: `contact-requests`
+   - **SMTP connection URI**: le credenziali SMTP del provider email (es. quello di tw2.eu)
+
+   Finché l'estensione non è installata le richieste vengono comunque salvate su
+   Firestore e sono leggibili dalla console.
+
+> Nota: senza il file `.env` configurato il modulo mostra un errore invitando a
+> contattare direttamente telefono/email.

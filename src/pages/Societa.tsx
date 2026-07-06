@@ -110,7 +110,7 @@ export default function Societa() {
           <p className="text-secondary max-w-2xl mx-auto mb-8">
             Contattaci per una consulenza senza impegno. Il nostro team è a tua disposizione.
           </p>
-          <a href="mailto:info@tw2.eu" className="btn-primary">
+          <a href="/#contatti" className="btn-primary">
             Scrivici subito
           </a>
         </div>

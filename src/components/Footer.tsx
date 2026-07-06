@@ -19,11 +19,11 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Servizi</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-[#E63946] transition-colors">Rete Dati</a></li>
-              <li><a href="#" className="hover:text-[#E63946] transition-colors">Videosorveglianza</a></li>
-              <li><a href="#" className="hover:text-[#E63946] transition-colors">Informatica</a></li>
-              <li><a href="#" className="hover:text-[#E63946] transition-colors">Automazione</a></li>
-              <li><a href="#" className="hover:text-[#E63946] transition-colors">Telefonia</a></li>
+              <li><a href="/#servizi" className="hover:text-[#E63946] transition-colors">Rete Dati</a></li>
+              <li><a href="/#servizi" className="hover:text-[#E63946] transition-colors">Videosorveglianza</a></li>
+              <li><a href="/#servizi" className="hover:text-[#E63946] transition-colors">Informatica</a></li>
+              <li><a href="/#servizi" className="hover:text-[#E63946] transition-colors">Automazione</a></li>
+              <li><a href="/#servizi" className="hover:text-[#E63946] transition-colors">Telefonia</a></li>
             </ul>
           </div>
 
@@ -35,6 +35,7 @@ export default function Footer() {
               <li><Link to="/portfolio" className="hover:text-[#E63946] transition-colors">Portfolio</Link></li>
               <li><Link to="/supporto" className="hover:text-[#E63946] transition-colors">Supporto</Link></li>
               <li><Link to="/assistenza-remota" className="hover:text-[#E63946] transition-colors">Assistenza Remota</Link></li>
+              <li><Link to="/privacy" className="hover:text-[#E63946] transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -42,7 +43,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Contatti</h4>
             <div className="space-y-3 text-sm">
-              <a href="tel:00390182733089" className="flex items-center gap-2 text-gray-400 hover:text-[#E63946] transition-colors">
+              <a href="tel:+3901827330891" className="flex items-center gap-2 text-gray-400 hover:text-[#E63946] transition-colors">
                 <Phone size={16} />
                 <span>0182-7330891</span>
               </a>
@@ -65,7 +66,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>&copy; 2024 Tecnoworld2. Tutti i diritti riservati.</p>
+            <p>&copy; {new Date().getFullYear()} Tecnoworld2. Tutti i diritti riservati.</p>
             <p>P.IVA: 03259940041</p>
           </div>
         </div>

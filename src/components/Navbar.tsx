@@ -36,7 +36,7 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <a href="mailto:info@tw2.eu" className="btn-primary">
+          <a href="/#contatti" className="btn-primary">
             Contattaci
           </a>
         </div>
@@ -66,7 +66,7 @@ export default function Navbar() {
             <Link to="/supporto" className="text-[#222222] font-medium" onClick={toggleMenu}>
               Supporto
             </Link>
-            <a href="mailto:info@tw2.eu" className="btn-primary text-center">
+            <a href="/#contatti" className="btn-primary text-center" onClick={toggleMenu}>
               Contattaci
             </a>
           </div>

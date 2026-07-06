@@ -148,8 +148,8 @@ export default function AssistenzaRemota() {
                 <Phone size={20} />
                 Chiama: 334-8213252
               </a>
-              <a href="mailto:info@tw2.eu" className="btn-secondary">
-                Invia richiesta email
+              <a href="/#contatti" className="btn-secondary">
+                Invia una richiesta
               </a>
             </div>
           </div>

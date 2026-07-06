@@ -48,7 +48,11 @@ npm run preview   # Preview the production build locally
 /supporto          → Support center (channels + FAQ accordion)
 /assistenza-remota → Remote assistance service (steps + benefits)
 /portfolio         → Case studies gallery
+/privacy           → Privacy policy (GDPR, contact form consent)
+*                  → NotFound (404 page)
 ```
+
+The home contact form section has `id="contatti"`; all "Contattaci" CTAs point to `/#contatti`.
 
 Breadcrumbs component auto-hides on home page.
 
@@ -173,8 +177,8 @@ Breadcrumbs component auto-hides on home page.
 ## Notes for Future Work
 
 ### High Priority Improvements
-1. **Form backend** — ContactForm currently client-side only
-2. **Image optimization** — Convert JPG to WebP for faster loading
+1. ~~**Form backend**~~ — DONE: ContactForm writes to Firestore `contact-requests` (see `src/lib/firebase.ts`, `firestore.rules`, README "Modulo di contatto"). Requires `.env` with `VITE_FIREBASE_*` vars and the "Trigger Email" extension for email delivery
+2. ~~**Image optimization**~~ — DONE: photos converted to WebP (max 1600px)
 3. **Analytics** — Add Google Analytics or Vercel Analytics tracking
 4. **A/B testing** — Add conversion tracking for form submissions
 
