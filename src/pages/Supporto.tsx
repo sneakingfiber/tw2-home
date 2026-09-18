@@ -1,4 +1,4 @@
-import { Phone, Mail, Zap, ChevronDown } from 'lucide-react'
+import { Phone, Mail, Zap, ChevronDown, Download } from 'lucide-react'
 import { useState } from 'react'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
@@ -23,6 +23,14 @@ const supportChannels = [
     description: "Intervento diretto presso la tua sede per risolvere problematiche complesse.",
     contact: "Valutazione personalizzata",
     availability: "Su appuntamento"
+  },
+  {
+    icon: Download,
+    title: "Assistenza Remota",
+    description: "Scarica TeamViewer QuickSupport per permetterci di connetterci al tuo dispositivo.",
+    contact: "Download TeamViewer",
+    availability: "Avvio immediato",
+    link: "https://download.teamviewer.com/download/TeamViewer_Host_Setup.exe"
   }
 ]
 
@@ -113,14 +121,11 @@ export default function Supporto() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {supportChannels.map((channel, idx) => {
               const Icon = channel.icon
-              return (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#DDDDDD] rounded-2xl p-8 card-hover"
-                >
+              const content = (
+                <>
                   <div className="w-12 h-12 bg-[#F7F7F7] rounded-xl flex items-center justify-center mb-4">
                     <Icon size={24} className="text-[#E63946]" />
                   </div>
@@ -134,6 +139,29 @@ export default function Supporto() {
                     <p className="font-medium text-[#222222]">{channel.contact}</p>
                     <p className="text-sm text-secondary">{channel.availability}</p>
                   </div>
+                </>
+              )
+
+              if (channel.link) {
+                return (
+                  <a
+                    key={idx}
+                    href={channel.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white border border-[#DDDDDD] rounded-2xl p-8 card-hover block"
+                  >
+                    {content}
+                  </a>
+                )
+              }
+
+              return (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#DDDDDD] rounded-2xl p-8 card-hover"
+                >
+                  {content}
                 </div>
               )
             })}
