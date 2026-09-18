@@ -13,7 +13,7 @@ service cloud.firestore {
         && request.resource.data.form.phone is string
         && request.resource.data.form.phone.size() > 0
         && request.resource.data.form.phone.size() <= 50
-        && request.resource.data.form.service is string
+        && request.resource.data.form["service"] is string
         && request.resource.data.form.message is string
         && request.resource.data.form.message.size() >= 10
         && request.resource.data.form.message.size() <= 5000

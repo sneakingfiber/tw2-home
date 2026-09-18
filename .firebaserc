@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "tecnoworld2-650b1"
+  },
+  "targets": {},
+  "etags": {
+    "tecnoworld2-650b1": {
+      "extensionInstances": {
+        "firestore-send-email": "5a01531178712f8e003be61886899877ae732c8f5d58a2ac3150fba9f58a85dc"
+      }
+    }
   }
 }
