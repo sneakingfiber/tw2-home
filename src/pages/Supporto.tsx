@@ -1,5 +1,6 @@
-import { Phone, Mail, Zap, ChevronDown, Download } from 'lucide-react'
+import { Phone, Mail, Zap, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import TeamViewerIcon from '../components/TeamViewerIcon'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 const supportChannels = [
@@ -25,7 +26,7 @@ const supportChannels = [
     availability: "Su appuntamento"
   },
   {
-    icon: Download,
+    icon: TeamViewerIcon,
     title: "Assistenza Remota",
     description: "Scarica TeamViewer QuickSupport per permetterci di connetterci al tuo dispositivo.",
     contact: "Download TeamViewer",
